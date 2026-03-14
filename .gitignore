@@ -1,0 +1,9 @@
+# Generated files
+node_modules/
+.env
+.env.local
+.DS_Store
+
+# Plans
+MASTER_PLAN.md
+
