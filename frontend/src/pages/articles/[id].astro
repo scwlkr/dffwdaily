@@ -1,0 +1,58 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getArticles } from '../../utils/api';
+import { marked } from 'marked';
+
+export async function getStaticPaths() {
+  const articles = await getArticles();
+  
+  return articles.map(article => ({
+    params: { id: article.id },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const htmlContent = marked.parse(article.content);
+
+const formattedDate = new Date(article.published_at).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<Layout title={`${article.title} | DFFW Daily`}>
+  <Header />
+  
+  <article class="max-w-3xl mx-auto py-8">
+    <header class="mb-12 text-center">
+      <time datetime={article.published_at} class="text-xs font-sans tracking-widest text-gray-500 uppercase pb-2 mb-6 border-b border-black inline-block">
+        {formattedDate}
+      </time>
+      <h1 class="text-5xl sm:text-6xl md:text-7xl font-black font-serif leading-tight mb-8">
+        {article.title}
+      </h1>
+    </header>
+    
+    <figure class="mb-12 border border-gray-200 bg-gray-100 p-2 border-b-4 border-r-4">
+      <img 
+        src={article.image_url} 
+        alt={`Visual for ${article.title}`}
+        class="w-full h-auto grayscale object-cover"
+        loading="eager"
+      />
+      <figcaption class="text-right text-xs mt-2 uppercase tracking-wide text-gray-500 font-sans">
+        AI Generated Imagery
+      </figcaption>
+    </figure>
+    
+    <div class="prose prose-xl prose-p:font-serif prose-headings:font-sans prose-headings:font-bold prose-a:underline prose-a:decoration-2 prose-a:underline-offset-4 mx-auto text-black">
+      <Fragment set:html={htmlContent} />
+    </div>
+  </article>
+  
+  <Footer />
+</Layout>

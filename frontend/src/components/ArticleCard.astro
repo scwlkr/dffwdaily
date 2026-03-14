@@ -1,0 +1,48 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  id: string;
+  title: string;
+  image_url: string;
+  published_at: string;
+  snippet?: string;
+}
+
+const { id, title, image_url, published_at, snippet } = Astro.props;
+const formattedDate = new Date(published_at).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<article class="group relative flex flex-col gap-4 pb-8 mb-8 border-b border-gray-200">
+  <div class="flex flex-col gap-2 order-2 sm:order-1">
+    <time datetime={published_at} class="text-xs font-sans tracking-widest text-gray-500 border-b border-black pb-1 mb-2 uppercase inline-block w-max">
+      {formattedDate}
+    </time>
+    <a href={`/articles/${id}`}>
+      <h2 class="text-3xl sm:text-4xl font-extrabold font-serif leading-tight group-hover:underline decoration-2">
+        {title}
+      </h2>
+    </a>
+    {snippet && (
+      <p class="text-lg text-gray-800 pt-2 font-serif leading-relaxed line-clamp-3">
+        {snippet}
+      </p>
+    )}
+  </div>
+  
+  <!-- Image container -->
+  <a href={`/articles/${id}`} class="block aspect-video w-full overflow-hidden bg-gray-100 border border-gray-200 order-1 sm:order-2">
+    <!-- Using standard img tag with optimized loading attributes to ensure zero-JS baseline while handling unknown remote URLs seamlessly -->
+    <img 
+      src={image_url} 
+      alt={`Header visual for ${title}`} 
+      class="w-full h-full object-cover grayscale transition-all duration-300 group-hover:grayscale-[50%] group-hover:scale-[1.02]" 
+      loading="lazy" 
+      decoding="async" 
+    />
+  </a>
+</article>
