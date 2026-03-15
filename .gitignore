@@ -7,3 +7,6 @@ node_modules/
 # Plans
 MASTER_PLAN.md
 
+# Supabase
+supabase_setup.sql
+
