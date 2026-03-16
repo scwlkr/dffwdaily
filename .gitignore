@@ -6,6 +6,9 @@ node_modules/
 
 # Plans
 MASTER_PLAN.md
+brand.md
+DEPLOYMENT.md
+
 
 # Supabase
 supabase_setup.sql
