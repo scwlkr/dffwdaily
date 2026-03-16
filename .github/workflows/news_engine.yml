@@ -1,0 +1,32 @@
+name: DFW News Engine Automation
+
+on:
+  schedule:
+    # Run at 10:00 AM UTC (5:00 AM CDT) on Mondays and Thursdays
+    - cron: '0 10 * * 1,4'
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  run-automation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: automation
+        run: npm install
+
+      - name: Run Automation Script
+        working-directory: automation
+        run: node index.js
+        env:
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
