@@ -22,9 +22,14 @@
 
 ### Logo System
 **Primary Logo**: A stark, typographic wordmark "DFFW" in bold grotesque sans-serif, with "DAILY" tracked out beneath it. 
+- **White Wordmark**: [dffw_d-logo_white.png](file:///Users/shanewalker/Desktop/dev/dffwdaily/BRAND/LOGO/dffw_d-logo_white.png) (For dark backgrounds)
+- **Black Wordmark**: [dffw_d-logo_black.png](file:///Users/shanewalker/Desktop/dev/dffwdaily/BRAND/LOGO/dffw_d-logo_black.png) (For light backgrounds/print)
+
 **Logo Variations**: 
-- *Horizontal*: "DFFW Daily" on a single line for navbars.
-- *Icon*: A monogram "D" with sharp, brutalist cuts.
+- **Icon**: A monogram "D" with sharp, brutalist cuts.
+- **Patterns**: Custom logo patterns available in [White](file:///Users/shanewalker/Desktop/dev/dffwdaily/BRAND/LOGO/dffw_d-logo-pattern_white-pattern.png) and [Black](file:///Users/shanewalker/Desktop/dev/dffwdaily/BRAND/LOGO/dffw_d-logo-pattern_black-pattern.png).
+- **Post Borders**: Specific borders for social media posts: [Standard](file:///Users/shanewalker/Desktop/dev/dffwdaily/BRAND/POST-BORDER/POST-BORDER-4to5.png) and [Alt-1](file:///Users/shanewalker/Desktop/dev/dffwdaily/BRAND/POST-BORDER/POST-BORDER-alt-1.png).
+
 **Clear Space**: The logo must always maintain a clear space equal to the height of the "D" all around it.
 **Minimum Sizes**: 
 - Digital Wordmark: 120px width
@@ -33,6 +38,8 @@
 
 ### Color System
 *DFFW Daily is a strictly dark-mode-first experience. Our palette is designed for low eye-strain and high contrast.*
+
+**Color Palette Summary**: Refer to [DFFW-D-colors.png](file:///Users/shanewalker/Desktop/dev/dffwdaily/BRAND/DFFW-D-colors.png) for visual reference.
 
 **Primary Palette**: 
 - **Void Black (Background)**: `#09090B` — The core foundation of the app.
@@ -101,3 +108,12 @@ A highly legible, neutral sans-serif optimized for long-form reading on digital 
 **Strategy Date**: March 15, 2026
 **Implementation**: Ready for cross-platform deployment
 **Protection**: Monitoring and compliance systems active
+
+## 📂 Brand Assets
+
+All original design assets are stored in the `/BRAND` directory.
+
+- **Logos**: [BRAND/LOGO/](file:///Users/shanewalker/Desktop/dev/dffwdaily/BRAND/LOGO)
+- **Patterns**: [LOGO Patterns](file:///Users/shanewalker/Desktop/dev/dffwdaily/BRAND/LOGO)
+- **Post Borders**: [BRAND/POST-BORDER/](file:///Users/shanewalker/Desktop/dev/dffwdaily/BRAND/POST-BORDER)
+- **Color Chart**: [DFFW-D-colors.png](file:///Users/shanewalker/Desktop/dev/dffwdaily/BRAND/DFFW-D-colors.png)
