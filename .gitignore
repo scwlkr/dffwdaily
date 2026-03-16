@@ -5,9 +5,7 @@ node_modules/
 .DS_Store
 
 # Plans
-MASTER_PLAN.md
-brand.md
-DEPLOYMENT.md
+
 
 
 # Supabase
