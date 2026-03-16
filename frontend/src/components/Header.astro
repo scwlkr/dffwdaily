@@ -7,17 +7,15 @@ const today = new Date().toLocaleDateString('en-US', {
 });
 ---
 
-<header class="py-6 sm:py-10 border-b-4 border-black mb-10 text-center">
-  <div class="flex justify-between items-end border-b pb-2 mb-4 border-gray-300">
-    <span class="text-sm font-sans uppercase tracking-widest text-gray-500">Vol. 1</span>
-    <span class="text-sm font-sans uppercase tracking-widest text-gray-500">{today}</span>
+<header class="py-6 sm:py-10 border-b border-graphite mb-10 text-center flex flex-col items-center">
+  <div class="flex justify-between items-end border-b pb-2 mb-8 border-graphite w-full">
+    <span class="text-sm font-sans uppercase tracking-widest text-ash">Vol. 1</span>
+    <span class="text-sm font-sans uppercase tracking-widest text-ash">{today}</span>
   </div>
-  <a href="/" class="inline-block group">
-    <h1 class="text-5xl sm:text-7xl md:text-8xl font-black font-sans tracking-tighter uppercase leading-none mb-2 group-hover:underline decoration-4 underline-offset-8">
-      DFFW Daily
-    </h1>
+  <a href="/" class="inline-block group mb-4">
+    <img src="/logo_white.png" alt="DFFW Daily" class="h-16 sm:h-20 w-auto opacity-90 group-hover:opacity-100 transition-opacity" />
   </a>
-  <p class="text-lg sm:text-xl italic font-serif text-gray-700 mt-2">
-    The hands-off local news engine for Dallas, Frisco, and Fort Worth
+  <p class="text-lg sm:text-xl font-sans text-ash mt-2 max-w-xl">
+    The signal. Never the noise.
   </p>
 </header>
