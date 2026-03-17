@@ -96,7 +96,7 @@ async function uploadImage(imageBuffer) {
   const fileName = `article-${Date.now()}-${crypto.randomBytes(4).toString('hex')}.jpg`;
   
   const { data, error } = await supabase.storage
-    .from('articles-images')
+    .from('public-images')
     .upload(fileName, imageBuffer, {
       contentType: 'image/jpeg',
       upsert: false
@@ -105,7 +105,7 @@ async function uploadImage(imageBuffer) {
   if (error) throw error;
   
   const { data: publicUrlData } = supabase.storage
-    .from('articles-images')
+    .from('public-images')
     .getPublicUrl(fileName);
     
   return publicUrlData.publicUrl;
