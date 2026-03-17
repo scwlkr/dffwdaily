@@ -55,3 +55,34 @@ The Writer (Gemini 1.5 Flash): Pass the scraped data to the Google AI Studio API
 The Artist (Nano Banana 2): Integrate the Gemini 3 Image API to generate one 16:9 photorealistic image per article that matches the lead story.
 
 The Publisher: Have the script upload the generated image to Supabase Storage, and INSERT the final Markdown and image URL directly into the Supabase articles table.
+
+---
+
+## 🚀 PHASE_2: Evolution & Expansion
+
+**Mission:** Transition DFFW Daily from a static news reader into a dynamic, highly engaging platform while maintaining our strict design and performance principles.
+
+### 🏛️ Software Architect Directives (Phase 2)
+
+**1. Analytics & Telemetry:** 
+Implement privacy-respecting, zero-cookie analytics (e.g., Plausible or Umami) to track article engagement without compromising our performance budget. 
+
+**2. Caching Strategy:** 
+Introduce Redis (Upstash free tier) or aggressively utilize Next.js/Astro caching layers. As article counts grow, build-time SSG will become slow. We must transition to Incremental Static Regeneration (ISR) or robust Server-Side Rendering (SSR) with edge caching to handle real-time news updates without full rebuilds.
+
+**3. Newsletter Automation Pipeline:**
+Design a pipeline that takes the top 5 weekly articles from the Supabase DB and automatically formats and queues a sleek, dark-mode email newsletter via Resend or MailerLite APIs.
+
+### 🎨 UX Architect Directives (Phase 2)
+
+**1. Advanced Semantic Navigation:**
+Move beyond simple chronologic scrolling. Implement a sticky, minimalist side-nav or bottom-bar for mobile that allows readers to filter by categories (e.g., Dallas, Tech, Local Politics) instantly, using client-side routing (Astro view transitions) for zero page reloads.
+
+**2. Micro-Interactions & Delight:**
+Maintain the brutalist aesthetic but add high-polish micro-interactions. Examples: subtle magnetic hover effects on article cards, smooth image reveals on scroll (intersection observers), and a seamless reading progress bar injected at the top of the viewport.
+
+**3. "The Archive" UX:**
+Design a powerful, instant search interface for past articles. Utilize Algolia or Supabase Full Text Search. The UI should be a massive, screen-filling modal with typography-first results that appear as the user types, respecting our 7:1 contrast ratio.
+
+**4. Continuous Maintenance & Feedback Loops:**
+Establish a user-feedback mechanism (e.g., a simple "Was this signal or noise?" binary vote at the bottom of articles). This data will feed back into the Gemini prompt instructions to continually refine the AI's writing style based on actual community preferences.
