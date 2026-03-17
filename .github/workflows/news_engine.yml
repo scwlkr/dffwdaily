@@ -2,6 +2,11 @@ name: DFW News Engine Automation
 
 on:
   schedule:
+    # --- GEMINI FREE TIER LIMITS STRATEGY ---
+    # Daily Limit (RPD): ~250-500. Strategy: Safe (Runs 2x/week)
+    # Requests Per Minute: 10-15 RPM. Strategy: Safe (1 API call per run)
+    # Data Usage: May be used for training. Strategy: Acceptable (public news)
+    # ------------------------------------------
     # Run at 10:00 AM UTC (5:00 AM CDT) on Mondays and Thursdays
     - cron: '0 10 * * 1,4'
   workflow_dispatch: # Allow manual triggering

@@ -1,5 +1,6 @@
 import FirecrawlApp from '@mendable/firecrawl-js';
 import { GoogleGenAI } from '@google/genai';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 import { createClient } from '@supabase/supabase-js';
 import dotenv from 'dotenv';
 import crypto from 'crypto';
@@ -9,6 +10,7 @@ dotenv.config();
 // Initialize clients
 const firecrawl = new FirecrawlApp({ apiKey: process.env.FIRECRAWL_API_KEY });
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const supabase = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_SERVICE_ROLE_KEY
@@ -64,22 +66,22 @@ async function writeArticle(scrapedData) {
 }
 
 async function generateImage(leadStorySummary) {
-  console.log('🎨 Skipping image generation (Free Tier placeholder)...');
-  // NOTE: Upgrade Gemini API to paid tier and uncomment the below to enable AI images
-  /*
-  const imageResult = await ai.models.generateImages({
-    model: 'imagen-4.0-generate-001',
-    prompt: `A 16:9 photorealistic news header photo for the following story: ${leadStorySummary}`,
-    config: {
-      numberOfImages: 1,
-      aspectRatio: '16:9',
-      outputMimeType: 'image/jpeg'
+  console.log('🎨 Generating image via Gemini Free Tier...');
+  try {
+    const model = genAI.getGenerativeModel({ model: "gemini-3.1-flash-image-preview" });
+    const result = await model.generateContent({
+      contents: [{ role: "user", parts: [{ text: `A 16:9 photorealistic news header photo for the following story: ${leadStorySummary}` }] }],
+      generationConfig: {
+      }
+    });
+
+    const imagePart = result.response.candidates[0].content.parts.find(p => p.inlineData);
+    if (imagePart && imagePart.inlineData) {
+      return Buffer.from(imagePart.inlineData.data, 'base64');
     }
-  });
-  
-  const base64Image = imageResult.generatedImages[0].image.imageBytes;
-  return Buffer.from(base64Image, 'base64');
-  */
+  } catch (error) {
+    console.error('⚠️ Image generation failed, falling back to placeholder:', error);
+  }
   
   return null;
 }
