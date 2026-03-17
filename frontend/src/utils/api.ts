@@ -8,8 +8,8 @@ export interface Article {
 }
 
 export async function getArticles(): Promise<Article[]> {
-  const supabaseUrl = import.meta.env.SUPABASE_URL;
-  const supabaseKey = import.meta.env.SUPABASE_ANON_KEY;
+  const supabaseUrl = import.meta.env.SUPABASE_URL || import.meta.env.PUBLIC_SUPABASE_URL;
+  const supabaseKey = import.meta.env.SUPABASE_ANON_KEY || import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
   
   // Provide robust mock data if Supabase keys are not set, ensuring the build never fails prematurely.
   if (!supabaseUrl || !supabaseKey) {
