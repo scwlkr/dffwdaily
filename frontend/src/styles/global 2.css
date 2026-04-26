@@ -1,0 +1,31 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-void-black: #09090B;
+  --color-paper-white: #FAFAFA;
+  --color-graphite: #18181B;
+  --color-ash: #A1A1AA;
+  --color-signal-blue: #38BDF8;
+  --color-alert-crimson: #E11D48;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-void-black);
+    color: var(--color-paper-white);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--color-paper-white);
+  }
+}
